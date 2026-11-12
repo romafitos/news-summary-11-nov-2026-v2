@@ -14,5 +14,11 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 OUT = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
 
+SRC = HERE / "summary.txt"
 OUT.mkdir(parents=True, exist_ok=True)
-shutil.copyfile(HERE / "summary.txt", OUT / "entry.txt")
+if SRC.stat().st_size == 0:
+    raise SystemExit("summary.txt is empty")
+dest = OUT / "entry.txt"
+shutil.copyfile(SRC, dest)
+if dest.stat().st_size != SRC.stat().st_size:
+    raise SystemExit("entry copy size mismatch")
