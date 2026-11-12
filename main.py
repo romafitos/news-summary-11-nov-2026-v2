@@ -1,7 +1,9 @@
-"""news-summary-01 entry (Python 3.13, stdlib only).
+"""news-summary-01 entry, v2 (Python 3.13, stdlib only).
 
 Writes the summary in summary.txt beside this file to
 $MAKEFUN_OUTPUT_DIR/entry.txt (default /output/entry.txt).
+The summary itself is authored in summary.txt; this file only
+copies it verbatim, never edits it.
 Deterministic: the output is a byte copy of the file, so two runs
 always write the same bytes.
 """
